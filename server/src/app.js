@@ -235,7 +235,6 @@ app.put('/orders/:id', async (req, res) => {
     try {
         const orderId = req.params.id;
         const { status } = req.body;
-
         const order = await models.Order.findById(orderId);
         if (!order) {
             return res.status(404).send('Order not found');
@@ -255,7 +254,6 @@ app.put('/orders/:id', async (req, res) => {
             payment.status = "Pending"
         }
         payment.createdAt = Date.now()
-
         await payment.save();
         const updatedOrder = await order.save();
         res.send(updatedOrder);
@@ -270,9 +268,7 @@ app.put('/cancel-order/:id', async (req, res) => {
     try {
         const orderId = req.params.id;
         const { status } = req.body;
-
         const order = await models.Order.findById(orderId);
-        console.log(order)
         if (!order) {
             return res.status(404).send('Order not found');
         }
@@ -282,12 +278,9 @@ app.put('/cancel-order/:id', async (req, res) => {
         if (!payment) {
             return res.status(404).send('Payment not found');
         }
-
         payment.deliveryStatus = status;
         payment.status = "Failed"
         payment.createdAt = Date.now()
-        
-
         await payment.save();
         const updatedOrder = await order.save();
         res.send(updatedOrder);
@@ -326,7 +319,6 @@ app.post('/payments', async (req, res) => {
 // Manage payment (admin only)
 // Define the route for updating a payment
 app.put('/payment/:id', async (req, res) => {
-    console.log(req.body);
     try {
         const paymentId = req.params.id;
 

@@ -40,11 +40,11 @@ export class SidebarComponent {
       icon: faShoppingCart,
       name: 'Orders'
     },
-    {
-      path: '/admin/payment',
-      icon: faMoneyBill,
-      name: 'Payment'
-    },
+    // {
+    //   path: '/admin/payment',
+    //   icon: faMoneyBill,
+    //   name: 'Payment'
+    // },
     {
       path: '/admin/feedback',
       icon: faComment,

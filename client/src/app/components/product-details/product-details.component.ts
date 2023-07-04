@@ -34,12 +34,11 @@ export class ProductDetailsComponent implements OnInit {
         this.isLoading = false
       });
     });
-    
   }
 
   onAddToCart(productId: string): void {
-    console.log(productId);
-    this.http.post('http://localhost:5100/add-to-cart', {productId}).subscribe(
+    const userId = localStorage.getItem('userId')
+    this.http.post('http://localhost:5100/add-to-cart', {userId,productId}).subscribe(
       (response) => {
         console.log(response);
         window.alert('Product added to cart!');

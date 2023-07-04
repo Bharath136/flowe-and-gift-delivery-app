@@ -15,7 +15,7 @@ export class LandingPageComponent {
   public product: any = {};
   public isLoading = false;
   birthdaySelected = '';
-  marrageSelected = '';
+  marriageSelected = '';
   functionSelected = false;
 
   regForm: FormGroup;
@@ -50,9 +50,9 @@ export class LandingPageComponent {
         product.productname.toLowerCase().includes(this.searchInput.toLowerCase());
 
       const categoryMatch =
-        ((!this.birthdaySelected && !this.marrageSelected && !this.functionSelected) ||
+        ((!this.birthdaySelected && !this.marriageSelected && !this.functionSelected) ||
           (this.birthdaySelected && product.category === 'birthday') ||
-          (this.marrageSelected && product.category === 'marrage') ||
+          (this.marriageSelected && product.category === 'marriage') ||
           (this.functionSelected && product.category === 'function'));
 
       return searchMatch && categoryMatch;

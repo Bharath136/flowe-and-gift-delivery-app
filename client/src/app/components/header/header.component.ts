@@ -8,17 +8,20 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   public isAdmin = false
+  token = false
 
   constructor(private route: Router) {
     const token = localStorage.getItem('jwtToken')
     if (token) {
       this.isAdmin = false
       localStorage.removeItem('adminJwtToken')
+      this.token = true
     }
     const jwtToken = localStorage.getItem("adminJwtToken")
     if (jwtToken) {
       localStorage.removeItem('jwtToken')
       this.isAdmin = true
+      this.token = true
     }
   }
   ngOnInit(): void {
@@ -40,5 +43,6 @@ export class HeaderComponent implements OnInit {
     window.alert("Logout Successful!")
     this.route.navigate(['/home'])
     this.isAdmin = false
+    this.token = false
   }
 }
